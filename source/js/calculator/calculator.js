@@ -8,7 +8,6 @@ export default class Calculator {
     this.previousOperandTextElement = previousOperandTextElement;
     this.currentOperandTextElement = currentOperandTextElement;
     this.memory = 0;
-    this.displayTrigonometric = '';
     this.clear();
   }
 
@@ -47,7 +46,7 @@ export default class Calculator {
     this.operation = operation;
 
     if (
-      !this.checkIsTrigonometric(this.operation) &&
+      !this._checkIsTrigonometric(this.operation) &&
       this.currentOperand !== ''
     ) {
       this.compute('math');
@@ -55,7 +54,7 @@ export default class Calculator {
       this.currentOperand = '';
     }
 
-    if (this.checkIsTrigonometric(this.operation)) {
+    if (this._checkIsTrigonometric(this.operation)) {
       this.compute('trigonometric');
     }
   }
@@ -78,6 +77,25 @@ export default class Calculator {
     }
   }
 
+  updateDisplay() {
+    this.currentOperandTextElement.innerText = getDisplayNumber(
+      this.currentOperand,
+    );
+
+    if (!this._checkIsTrigonometric(this.operation)) {
+      this.previousOperandTextElement.innerText = `${getDisplayNumber(
+        this.previousOperand,
+      )} ${this.operation || ''}`;
+      return;
+    }
+
+    this.previousOperandTextElement.innerText = '';
+  }
+
+  _checkIsTrigonometric(operation) {
+    return TRIGONOMETRIC_OPERATIONS.includes(operation);
+  }
+
   _computeMath(prev, current) {
     this.currentOperand = computeMathOperations(this.operation, prev, current);
     this.operation = undefined;
@@ -89,24 +107,5 @@ export default class Calculator {
       this.operation,
       current,
     );
-  }
-
-  updateDisplay() {
-    this.currentOperandTextElement.innerText = getDisplayNumber(
-      this.currentOperand,
-    );
-
-    if (!this.checkIsTrigonometric(this.operation)) {
-      this.previousOperandTextElement.innerText = `${getDisplayNumber(
-        this.previousOperand,
-      )} ${this.operation || ''}`;
-      return;
-    }
-
-    this.previousOperandTextElement.innerText = '';
-  }
-
-  checkIsTrigonometric(operation) {
-    return TRIGONOMETRIC_OPERATIONS.includes(operation);
   }
 }

@@ -8,24 +8,17 @@
 
 **The calculator allows basic arithmetic operations:**
 
- `+` - addition
- 
- `-` - subtraction
- 
- `*` - multiplication
- 
- `÷` - division
- 
- `AC` - reset calculations.
+ `+` - addition\
+ `-` - subtraction\
+ `*` - multiplication\
+ `÷` - division\
+ `AC` - reset calculations
  
 **The calculator allows to compute trigonometric functions:**
  
- `sin` - the sine function
- 
- `cos` - the cosine function
- 
- `tg` - the tangent function
- 
+ `sin` - the sine function\
+ `cos` - the cosine function\
+ `tg` - the tangent function\
  `ctg` - the cotangent function
  
 **The calculator allows memory operations:**

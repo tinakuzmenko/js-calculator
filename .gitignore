@@ -7,3 +7,4 @@ Thumbs.db
 *.log*
 node_modules/
 build/
+source/coverage/

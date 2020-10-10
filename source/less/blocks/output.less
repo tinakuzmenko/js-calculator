@@ -1,0 +1,22 @@
+.output {
+  grid-column-start: span 5;
+  background-color: @output-background-color;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+  width: 100%;
+
+  .previous-operand {
+    color: @previous-operand;
+    font-size: 1.5rem;
+  }
+
+  .current-operand {
+    color: @white;
+    font-size: 2.5rem;
+  }
+}

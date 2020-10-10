@@ -8,11 +8,11 @@
 
 **The calculator allows basic arithmetic operations:**
 
- `+` - addition\
+ `+` - addition
  
- `-` - subtraction\
+ `-` - subtraction
  
- `*` - multiplication\
+ `*` - multiplication
  
  `÷` - division
  

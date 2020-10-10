@@ -1,9 +1,7 @@
-import { TRIGONOMETRIC_OPERATIONS } from '../helpers/constants.js';
-import {
-  computeTheResult,
-  computeTrigonometricFunction,
-  getDisplayNumber,
-} from '../helpers/utils';
+import { TRIGONOMETRIC_OPERATIONS } from '../utils/constants.js';
+import { getDisplayNumber } from '../utils/getDisplayNumber';
+import { computeMathOperations } from '../utils/computeMathOperations';
+import { computeTrigonometricOperations } from '../utils/computeTrigonometricOperations';
 
 export default class Calculator {
   constructor(previousOperandTextElement, currentOperandTextElement) {
@@ -58,33 +56,39 @@ export default class Calculator {
     }
 
     if (this.checkIsTrigonometric(this.operation)) {
-      this.previousOperand = this.currentOperand;
       this.compute('trigonometric');
-      this.displayTrigonometric = `${this.operation}(${this.previousOperand}) =`;
-      this.previousOperand = getDisplayNumber(this.currentOperand);
     }
   }
 
   compute(computeType) {
-    const prev = parseFloat(this.previousOperand);
     const current = parseFloat(this.currentOperand);
 
     if (isNaN(current)) return;
 
     if (computeType === 'math') {
+      const prev = parseFloat(this.previousOperand);
+
       if (isNaN(prev)) return;
-      this.currentOperand = computeTheResult(this.operation, prev, current);
-      this.operation = undefined;
-      this.previousOperand = '';
+
+      this._computeMath(prev, current);
     }
 
     if (computeType === 'trigonometric') {
-      this.previousOperand = current;
-      this.currentOperand = computeTrigonometricFunction(
-        this.operation,
-        current,
-      );
+      this._computeTrigonometric(current);
     }
+  }
+
+  _computeMath(prev, current) {
+    this.currentOperand = computeMathOperations(this.operation, prev, current);
+    this.operation = undefined;
+    this.previousOperand = '';
+  }
+
+  _computeTrigonometric(current) {
+    this.currentOperand = computeTrigonometricOperations(
+      this.operation,
+      current,
+    );
   }
 
   updateDisplay() {
@@ -92,15 +96,10 @@ export default class Calculator {
       this.currentOperand,
     );
 
-    if (this.operation != null && !this.checkIsTrigonometric(this.operation)) {
+    if (!this.checkIsTrigonometric(this.operation)) {
       this.previousOperandTextElement.innerText = `${getDisplayNumber(
         this.previousOperand,
-      )} ${this.operation}`;
-      return;
-    }
-
-    if (this.checkIsTrigonometric(this.operation)) {
-      this.previousOperandTextElement.innerText = this.displayTrigonometric;
+      )} ${this.operation || ''}`;
       return;
     }
 

@@ -1,5 +1,5 @@
 import Calculator from './calculator/calculator';
-import { useCalculator } from './helpers/utils';
+import { useCalculator } from './utils/useCalculator';
 
 const calculatorElement = document.querySelector('.calculator-grid');
 const previousOperandTextElement = document.querySelector(

@@ -8,8 +8,8 @@
 
 The calculator allows basic arithmetic operations:
 
- *+* - addition,
- *-* - subtraction,
+ *+* - addition,\
+ *-* - subtraction,\
  *** - multiplication,
  *÷* - division,
  

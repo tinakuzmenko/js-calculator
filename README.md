@@ -1,8 +1,8 @@
-<h1 align="center">Welcome to Aviasales Test Assignment (Vanilla JS) 👋</h1>
+<h1 align="center">JavaScript Calculator (test assignment)</h1>
 <p>
 </p>
 
-> Test Assignment for aviasales.ru made on Vanilla JavaScript (ES6).
+> Test Assignment for MailerQ. Technologies used: HTML, LESS, ES6, Jest, Webpack
 
 ## Install
 

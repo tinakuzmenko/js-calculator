@@ -48,3 +48,9 @@ npm run start
 ```sh
 npm test
 ```
+
+## Build
+
+```sh
+npm run build
+```

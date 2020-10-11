@@ -1,5 +1,5 @@
-function fixDecimal(a) {
-  return (parseFloat(number).toPrecision(12));
+function fixDecimal(number) {
+  return Number(parseFloat(number).toPrecision(12));
 }
 
 export const computeMathOperations = (operation, prev, current) => {
